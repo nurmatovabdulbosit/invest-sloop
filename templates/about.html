@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horijiy Loyihalar Ro'yxati</title>
+</head>
+<body>
+    <h1>Horijiy Loyihalar Ro'yxati</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Loyiha nomi</th>
+                <th>Holati</th>
+                <th>Kiritilgan sana</th>
+                <th>O'zgartirilgan</th>
+                <th>User</th>
+                <th>Masul vakil</th>
+                <th>Tuman</th>
+                <th>Loyiha quvvati</th>
+                <th>Boshlash sanasi</th>
+                <th>Tugatish sanasi</th>
+                <th>Davlat</th>
+                <th>Soha yonalishi</th>
+                <th>Loyiha qiymati</th>
+                <th>Tasdiqlangan PDF</th>
+                <th>Tarmoq jadvali</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horijiy in horijiy_list %}
+            <tr>
+                <td>{{ counter }}</td>
+                <td>{{ horijiy.title }}</td>
+                <td>{{ horijiy.status }}</td>
+                <td>{{ horijiy.create_at }}</td>
+                <td>{{ horijiy.update }}</td>
+                <td>{{ horijiy.create_by }}</td>
+                <td>{{ horijiy.masul_vakil }}</td>
+                <td>{{ horijiy.tuman }}</td>
+                <td>{{ horijiy.loyiha_quvvati }}</td>
+                <td>{{ horijiy.boshlash_sanasi }}</td>
+                <td>{{ horijiy.tugatish_sanasi }}</td>
+                <td>{{ horijiy.davlat }}</td>
+                <td>{{ horijiy.soha_yonalishi }}</td>
+                <td>{{ horijiy.loyiha_qiymati }}</td>
+                <td><a href="{{ horijiy.pdf_file.url }}">{{ horijiy.pdf_file.name }}</a></td>
+                <td><a href="{{ horijiy.excel_file.url }}">{{ horijiy.excel_file.name }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
