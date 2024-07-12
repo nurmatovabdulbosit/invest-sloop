@@ -28,7 +28,7 @@ TUMANLAR = (
 SOHA_YONALISHLARI = (
     ('Xizmat', 'Xizmat'),
     ('Sanoat', 'Sanoat'),
-    ('Qishloq', 'Qishloq'),
+    ('Qishloq', 'Qishloq')
 )
 
 

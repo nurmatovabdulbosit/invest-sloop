@@ -15,11 +15,14 @@ class HorijiyAdmin(ImportExportModelAdmin):
 
     def Kiritilgan(self, obj):
         return obj.create_at.strftime("%d.%m.%Y")  # Siz istalgan formatni qo'shing
+    Kiritilgan.short_description = 'Kiritilgan Sana'
         
     def tugashi(self, obj):
         return obj.tugatish_sanasi.strftime("%Y")  # Siz istalgan formatni qo'shing
+    tugashi.short_description = 'Tugatish Yili'
     
     def boshi(self, obj):
         return obj.boshlash_sanasi.strftime("%Y")  # Siz istalgan formatni qo'shing
+    boshi.short_description = 'Boshlash Yili'
 
 admin.site.register(Horijiy, HorijiyAdmin)

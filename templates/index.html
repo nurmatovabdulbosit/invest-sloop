@@ -7,23 +7,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Invest nazorat</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-
-
-
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 <body>
    <input type="checkbox" id="menu-toggle">
     <div class="sidebar">
         <div class="side-header">
-            <h3>I<span>vest</span></h3>
+            <h3>I<span>nvest</span></h3>
         </div>
         
         <div class="side-content">
             <div class="profile">
-                <div class="profile-img bg-img" style="background-image: url('{% static '/img/1.jpeg' %}')"></div>
-
-
+                <div class="profile-img bg-img" style="background-image: url('{% static 'img/1.jpeg' %}')"></div>
                 <h4>{{ user.username }}</h4>
                 <small>Art Director</small>
             </div>
@@ -66,14 +61,12 @@
                             <small>Tasks</small>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </div>
     
     <div class="main-content">
-        
         <header>
             <div class="header-content">
                 <label for="menu-toggle">
@@ -96,9 +89,7 @@
                     </div>
                     
                     <div class="user">
-                        <div class="profile-img bg-img" style="background-image: url('{% static '/img/1.jpeg' %}')"></div>
-
-                        
+                        <div class="profile-img bg-img" style="background-image: url('{% static 'img/1.jpeg' %}')"></div>
                         <span class="las la-power-off"></span>
                         <span>Logout</span>
                     </div>
@@ -106,21 +97,18 @@
             </div>
         </header>
         
-        
         <main>
-            
             <div class="page-header">
                 <h1>Invest nazorat</h1>
                 <small>Home / Invest nazorat</small>
             </div>
             
             <div class="page-content">
-            
                 <div class="analytics">
-
                     <div class="card">
                         <div class="card-head">
-                            <h2>{{ horijiy_list|length }}</h2>
+                            <h2>{{ horijiy_list.paginator.count|intcomma }}</h2>
+
                             <span class="las la-stream"></span>
                         </div>
                         <div class="card-progress">
@@ -133,7 +121,7 @@
 
                     <div class="card">
                         <div class="card-head">
-                            <h2>{{ total_sum|floatformat|intcomma }} mlrd.so'mda</h2>
+                            <h2>{{ total_sum|floatformat|intcomma }} mlrd.so'm</h2>
                             <span class="las la-dollar-sign"></span>
                         </div>
                         <div class="card-progress">
@@ -150,13 +138,7 @@
                             <h2 style="color: #22baa0;">{{ deactive_count|intcomma }} <br><small style="color: #22baa0;font-size: .8rem;font-weight: 600;">ISHGA TUSHGAN</small></h2>
                             <span class="las la-tasks"></span>
                         </div>
-                        
-                            
-                            
-                        
                         <div class="card-progress">
-                            
-                            
                             <div class="card-indicator">
                                 <div class="indicator three" style="width: 65%"></div>
                             </div>
@@ -175,12 +157,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-
                 <div class="records table-responsive">
-
                     <div class="record-header">
                         <form method="GET" action="">
                             <div class="add">
@@ -197,24 +176,34 @@
                                     <option value="Qishloq">Qishloq</option>
                                 </select>
                                 <select name="tuman">
-                                    <option value="">TUMAN</option>
-                                    {% for tuman_value, tuman_name in TUMANLAR %}
-                                        <option value="{{ tuman_value }}" {% if selected_tuman == tuman_value %}selected{% endif %}>{{ tuman_name }}</option>
-                                    {% endfor %}
+                                    <option value="">TUMANLAR</option>
+                                    <option value="Namangan_shahar">Namangan shahar</option>
+                                    <option value="Davlatobod">Davlatobod</option>
+                                    <option value="Yangi Namangan">Yangi Namangan</option>
+                                    <option value="Mingbuloq">Mingbuloq</option>
+                                    <option value="Kosonsoy">Kosonsoy</option>
+                                    <option value="Namangan">Namangan</option>
+                                    <option value="Norin">Norin</option>
+                                    <option value="Pop">Pop</option>
+                                    <option value="To`raqo`rg`on">To`raqo`rg`on</option>
+                                    <option value="Uychi">Uychi</option>
+                                    <option value="Uchqo`rg`on">Uchqo`rg`on</option>
+                                    <option value="Chortoq">Chortoq</option>
+                                    <option value="Chust">Chust</option>
+                                    <option value="Yangiqo`rg`on">Yangiqo`rg`on</option>
                                 </select>
-                                
-                                    <button style="cursor: pointer;">Filter</button>
+                                <button style="cursor: pointer;">Filter</button>
                             </div>
                         </form>
                         <div class="browse">
                             <form method="GET" action="">
                                 <div class="add">
-                                <input type="search" name="q" placeholder="Search" class="record-search">
-                                
-                               
+                                    <input type="search" name="q" placeholder="Search" class="record-search" value="{{ request.GET.q }}">
+                                    <button type="submit" style="margin: 1px;">Qidirish</button>
                                     <button style="margin: 1px;"><a href="{% url 'export_to_excel' %}">Hisobot</a></button>
-                                </div>                                
+                                </div>
                             </form>
+                            
                         </div>
                     </div>
 
@@ -232,7 +221,6 @@
                                     <th><span class="las la-sort"></span> HOLATI</th>
                                     <th><span class="las la-sort"></span> TARMOQ</th>
                                 </tr>
-                               
                             </thead>
                             <tbody>
                                 {% for horijiy in horijiy_list %}
@@ -241,7 +229,7 @@
                                     <td>{{ horijiy.title }}</td>
                                     <td>
                                         <div class="client">
-                                           <div class="client-img bg-img" style="background-image: url('{% static '/img/1.jpeg' %}')"></div>
+                                            <div class="client-img bg-img" style="background-image: url('{% static 'img/1.jpeg' %}')"></div>
                                             <div class="client-info">
                                                 <h4>{{ horijiy.masul_vakil }}</h4>
                                                 <small>{{ horijiy.get_tuman_display }}</small>
@@ -256,38 +244,44 @@
                                     <td>
                                         <div class="actions">
                                             {% if horijiy.pdf_file %}
-                                                <span ><a href="#" class="las la-check-square"></a></span>
+                                                <span><a href="{{ horijiy.pdf_file.url }}" class="las la-check-square"></a></span>
+                                                <span><a href="{{ horijiy.pdf_file.url }}" class="las la-file-pdf"></a></span>
                                             {% else %}
                                                 <span class="las la-minus-square"></span>
-                                            {% endif %}
-                                            {% if horijiy.pdf_file %}
-                                                <span ><a href="{{ horijiy.pdf_file.url }}" class="las la-file-pdf"></a></span>
-                                            {% else %}
                                                 <span class="las la-file-pdf"></span>
                                             {% endif %}
-                                            
-                                            {% if horijiy.pdf_file %}
-                                                <span ><a href="{{ horijiy.excel_file.url }}" class="las la-file-excel"></a></span>
+                                            {% if horijiy.excel_file %}
+                                                <span><a href="{{ horijiy.excel_file.url }}" class="las la-file-excel"></a></span>
                                             {% else %}
-                                            <span class="las la-file-excel"></span>
+                                                <span class="las la-file-excel"></span>
                                             {% endif %}
-                                            
                                         </div>
                                     </td>
                                 </tr>
-
                                 {% endfor %}
-                                                             
                             </tbody>
                         </table>
                     </div>
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if horijiy_list.has_previous %}
+                                <a href="?page=1">&laquo;Boshiga </a>
+                                <a href="?page={{ horijiy_list.previous_page_number }}">Oldingi</a>
+                            {% endif %}
 
+                            <span class="current">
+                                {{ horijiy_list.number }}-sahifa
+                            </span>
+
+                            {% if horijiy_list.has_next %}
+                                <a href="?page={{ horijiy_list.next_page_number }}">Keyingi</a>
+                                <a href="?page={{ horijiy_list.paginator.num_pages }}">Oxirgi &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
                 </div>
-            
             </div>
-            
         </main>
-        
     </div>
 </body>
 </html>
