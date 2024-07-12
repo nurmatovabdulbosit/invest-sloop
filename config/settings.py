@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'horijiy',
+    'import_export',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

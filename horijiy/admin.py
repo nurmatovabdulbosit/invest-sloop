@@ -1,7 +1,11 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import Horijiy
+from .resources import HorijiyResource
 
-class HorijiyAdmin(admin.ModelAdmin):
+class HorijiyAdmin(ImportExportModelAdmin):
+    resource_class = HorijiyResource
+
     list_display = (
         'title', 'masul_vakil', 'tuman', 'loyiha_quvvati', 'boshi', 
         'tugashi', 'loyiha_qiymati', 'pdf_file', 'excel_file', 'status', 'Kiritilgan', 'create_by'
@@ -17,6 +21,5 @@ class HorijiyAdmin(admin.ModelAdmin):
     
     def boshi(self, obj):
         return obj.boshlash_sanasi.strftime("%Y")  # Siz istalgan formatni qo'shing
-    
 
 admin.site.register(Horijiy, HorijiyAdmin)

@@ -4,21 +4,31 @@ from autoslug import AutoSlugField
 
 STATUS = (
     ('active', 'Jarayonda'),
-    ('deactive', 'Tugatilgan')
+    ('deactive', 'Tugatilgan'),
+    ('expired', 'Muddati o`tgan')
 )
 
 TUMANLAR = (
-    ('namangan_shahar', 'Namangan shahar'),
-    ('mingbuloq', 'Mingbuloq'),
-    ('chust', 'Chust'),
-    ('norin', 'Norin'),
-    ('pop', 'Pop'),
+    ('Namangan_shahar', 'Namangan shahar'),
+    ('Davlatobod','Davlatobod'),
+    ('Yangi Namangan', 'Yangi Namangan'),
+    ('Mingbuloq', 'Mingbuloq'),
+    ('Kosonsoy', 'Kosonsoy'),
+    ('Namangan','Namangan'),
+    ('Norin','Norin'),
+    ('Pop','Pop'),
+    ('To`raqo`rg`on','To`raqo`rg`on'),
+    ('Uychi','Uychi'),
+    ('Uchqo`rg`on','Uchqo`rg`on'),
+    ('Chortoq','Chortoq'),
+    ('Chust','Chust'),
+    ('Yangiqo`rg`on', 'Yangiqo`rg`on')
 )
 
 SOHA_YONALISHLARI = (
-    ('xizmat', 'Xizmat'),
-    ('sanoat', 'Sanoat'),
-    ('qishloq', 'Qishloq'),
+    ('Xizmat', 'Xizmat'),
+    ('Sanoat', 'Sanoat'),
+    ('Qishloq', 'Qishloq'),
 )
 
 

@@ -365,7 +365,7 @@ input, button, select {
     border: 1px solid #b0b0b0;
     border-radius: 3px;
     display: inline-block;
-    width: 75px;
+    width: 80%;
     padding: 0rem .5rem;
     margin-right: .8rem;
     color: #666;
@@ -416,6 +416,7 @@ table thead th:first-child {
 table tbody td {
     padding: 1rem 0rem;
     color: #444;
+    
 }
 
 table tbody td:first-child {

@@ -5,6 +5,16 @@ from django.http import HttpResponse
 from openpyxl import Workbook
 from openpyxl.styles import Font
 from openpyxl.utils import get_column_letter
+from django.contrib import admin
+from import_export.admin import ImportMixin
+from .resources import HorijiyResource
+
+
+class HorijiyAdmin(ImportMixin, admin.ModelAdmin):
+    resource_class = HorijiyResource
+
+    def get_import_resource_kwargs(self, request, *args, **kwargs):
+        return {'user': request.user}
 
 def export_to_excel(request):
     # Horijiy obyektlarini olish
@@ -91,4 +101,26 @@ def index(request):
         'horijiy_list': horijiy_list,
         'total_sum': total_sum,
     }
+    return render(request, 'index.html', context)
+def index(request):
+    active_count = Horijiy.objects.filter(status='active').count()
+    deactive_count = Horijiy.objects.filter(status='deactive').count()
+    expired_count = Horijiy.objects.filter(status='expired').count()
+    tuman = request.GET.get('tuman', '')
+    horijiy_list = Horijiy.objects.all()
+    if tuman:
+        horijiy_list = horijiy_list.filter(tuman=tuman)
+
+    total_sum = horijiy_list.aggregate(total_sum=Sum('loyiha_qiymati'))['total_sum']
+
+    context = {
+        'active_count': active_count,
+        'deactive_count': deactive_count,
+        'expired_count': expired_count,
+        'horijiy_list': horijiy_list,
+        'total_sum': total_sum,
+        'selected_tuman': tuman,  # Pass the selected value to the template
+        'TUMANLAR': Horijiy.TUMANLAR,
+    }
+
     return render(request, 'index.html', context)
