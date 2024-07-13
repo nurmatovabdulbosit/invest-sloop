@@ -114,6 +114,19 @@ USE_I18N = True
 
 USE_TZ = True
 
+# settings.py
+
+# Agar foydalanuvchi 1 daqiqa davomida faol bo'lmasa, sessiya tugaydi
+SESSION_COOKIE_AGE = 160  # Sekundlarda ko'rsatilgan vaqt
+SESSION_SAVE_EVERY_REQUEST = True  # Har bir so'rovda sessiya yangilanadi
+
+
+# settings.py
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/admin/'
+
+
 #media setingg
 # Fayl oxirida MEDIA_URL va MEDIA_ROOT qo'shing
 import os

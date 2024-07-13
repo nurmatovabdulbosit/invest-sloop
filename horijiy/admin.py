@@ -1,9 +1,9 @@
 from django.contrib import admin
-from import_export.admin import ImportExportModelAdmin
+from import_export.admin import ExportMixin
 from .models import Horijiy
 from .resources import HorijiyResource
 
-class HorijiyAdmin(ImportExportModelAdmin):
+class HorijiyAdmin(ExportMixin, admin.ModelAdmin):
     resource_class = HorijiyResource
 
     list_display = (

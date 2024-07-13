@@ -5,7 +5,13 @@ from django.http import HttpResponse
 from openpyxl import Workbook
 from openpyxl.styles import Font
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
 
+@login_required
+def my_view(request):
+    return render(request, 'registration/login.html')
+
+@login_required
 def index(request):
     horijiy_list = Horijiy.objects.all()
 
@@ -37,6 +43,7 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+@login_required
 def export_to_excel(request):
     # Excel faylni yaratish
     workbook = Workbook()
@@ -75,6 +82,8 @@ def export_to_excel(request):
         excel_url = horijiy.excel_file.url if horijiy.excel_file else ''
         row.append(pdf_url)
         row.append(excel_url)
+
+        worksheet.append(row)
 
         # PDF va Excel giperhavolalarni qo'shish
         pdf_cell = worksheet.cell(row=index+1, column=len(headers)-1)

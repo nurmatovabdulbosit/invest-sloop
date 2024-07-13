@@ -1,0 +1,49 @@
+<!-- templates/registration/login.html -->
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div id="auth_background">
+        <img src="{% static 'img/login_background.jpg' %}">
+    </div>
+    <div id="auth">
+        <div></div>
+        <div id="login">
+            <div id="auth_content"> 
+                <div id="auth_login">
+                        <span id="auth_title">Tizimga kirish</span>
+                    <div id="auth_forms">
+                        <div id="auth_form_UNEmail" class="auth_form_option selected">
+                            <form method="post">
+                                 {% csrf_token %}
+                                    <div class="field">
+                                        <label for="id_username">Login:</label>
+                                        <input class="auth_field" id="id_username"type="text" name="username" autofocus="" placeholder="Login kiriting" autocapitalize="none">     
+                                    </div> 
+                                     <div class="field">
+                                        <label for="id_password">Parol:</label>      
+                                        <input class="auth_field" id="id_password" name="password" placeholder="Пароль" type="password" value="">
+                                    </div>
+                                        <input class="auth_button auth_submit" id="btn" name="btn" type="submit" value="Кириш ">
+                            </form>
+                        </div>
+                        <div id="provider_11053" class="auth_form_option"><input id="btn_11053" class="auth_button auth_button_sso auth_submit" type="button" value="Кириш ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+</body>
+</html>
