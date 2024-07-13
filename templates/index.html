@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Invest nazorat</title>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
@@ -209,6 +210,7 @@
                                     <th>#T/R</th>
                                     <th><span class="las la-sort"></span> NOMI</th>
                                     <th><span class="las la-sort"></span> MASUL VAKIL</th>
+                                    <th><span class="las la-sort"></span> TUMAN</th>
                                     <th><span class="las la-sort"></span> QUVVATI</th>
                                     <th><span class="las la-sort"></span> QIYMATI</th>
                                     <th><span class="las la-sort"></span> MUDDATI</th>
@@ -224,13 +226,14 @@
                                     <td>{{ horijiy.title }}</td>
                                     <td>
                                         <div class="client">
-                                            <div class="client-img bg-img" style="background-image: url('{% static 'img/1.jpeg' %}')"></div>
+                                            <div class="client-img bg-img" style="background-image: url('{% static 'img/1.jpg' %}')"></div>
                                             <div class="client-info">
                                                 <h4>{{ horijiy.masul_vakil }}</h4>
                                                 <small>{{ horijiy.get_tuman_display }}</small>
                                             </div>
                                         </div>
                                     </td>
+                                    <td>{{ horijiy.get_tuman_display }}</td>
                                     <td>{{ horijiy.loyiha_quvvati }}</td>
                                     <td>{{ horijiy.loyiha_qiymati }}</td>
                                     <td>{{ horijiy.tugatish_sanasi }}</td>
